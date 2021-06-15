@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "915339558731",
+    "firebase_url": "https://credito-master.firebaseio.com",
+    "project_id": "credito-master",
+    "storage_bucket": "credito-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915339558731:android:e91c895ee9642a93",
+        "android_client_info": {
+          "package_name": "com.credito"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915339558731-2jeskqf92s2ukhbbmnpi5j3grru6uijs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXd81v7I-Fy4avcdazke93p_aTNa0v94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915339558731-2jeskqf92s2ukhbbmnpi5j3grru6uijs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

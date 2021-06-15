@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MCQs</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                border-radius: 10px;
+                outline: none;
+            }
+            body{
+                margin: 0;
+            }
+            form{
+                margin-top: 90px;
+            }
+            #in1,#in2,#in3{
+                display: block;
+                height: 50px;
+                border: 3px solid orangered;
+                width: 30%;
+                margin: 15px auto;
+                font-size: 25px;
+                padding: 10px;
+            }
+            input[type=submit]{
+                display: block;
+                width: 30%;
+                height: 50px;
+                background-color: blue;
+                margin: 20px auto;
+                font-size: 20px;
+                color: white;
+                font-weight: bold;
+            }
+            h1{
+                text-align: center;
+                color: blue;
+                font-weight: bolder;
+                font-size: 45px;
+            }
+            .row1,.row2{
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0px 25%;
+            }
+            #op1,#op2,#op3,#op4{
+                width: 19%;
+                height: 50px;
+                border: 3px solid yellowgreen;
+                border-radius: 15px;
+                margin: 15px;
+                font-size: 25px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>MCQs</h1>
+        <form action="https://us-central1-credito-491b7.cloudfunctions.net/putMCQs" method="GET">
+            <input type="text" id="in1" name="cat" required autocomplete="off" placeholder="Enter Category" onchange="saveCat(this)">
+            <input type="text" id="in2" name="question" required autocomplete="off" placeholder="Enter Question">
+            <input type="text" id="in3" name="answer" required autocomplete="off" placeholder="Enter Answer" onchange="setOp()">
+
+            <div class="row1">
+                <input type="text" id="op1" name="option1" required autocomplete="off" placeholder="Option1">
+                <input type="text" id="op2" name="option2" required autocomplete="off" placeholder="Option2">
+            </div>
+            <div class="row2">
+                <input type="text" id="op3" name="option3" required autocomplete="off" placeholder="Option3">
+                <input type="text" id="op4" name="option4" required autocomplete="off" placeholder="Option4">
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+            function setOp(){
+                const no = getRandomNo(1,4);
+                document.getElementById("op"+no).value = document.getElementById("in3").value;
+            }
+
+            function getRandomNo(min,max){
+                return Math.floor(Math.random()*(max-min+1)+min);
+            }
+
+            function saveCat(ref){
+                localStorage.setItem("Cat",document.getElementById("in1").value);
+            }
+
+            (function() {
+                var cat = window.localStorage.getItem("Cat");
+                if(cat != null){
+                    document.getElementById("in1").value = cat;
+                }
+            })();
+        </script>
+    </body>
+</html>

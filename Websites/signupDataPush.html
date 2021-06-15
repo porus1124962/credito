@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Word Completion</title>
+        <style>
+            form{
+                margin-top: 90px;
+            }
+            #in1,#in2{
+                display: block;
+                height: 40px;
+                border: 3px solid black;
+                width: 30%;
+                margin: 15px auto;
+                font-size: 25px;
+                padding: 10px;
+            }
+            input[type=submit]{
+                display: block;
+                width: 30%;
+                height: 50px;
+                background-color: blue;
+                margin: 20px auto;
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Push Account To Server</h1>
+        <form action="https://us-central1-credito-master.cloudfunctions.net/pushData2" method="GET">
+            <input type="text" id="in1" name="email" required autocomplete="off" placeholder="Email Here">
+            <input type="text" id="in2" name="pass" required autocomplete="off" placeholder="Pass Here">
+            <input type="text" id="in1" name="coins" required autocomplete="off" placeholder="coins">
+            <input type="text" id="in2" name="amazeLevels" required autocomplete="off" placeholder="Amaze Level">
+            <input type="text" id="in1" name="wordCompletionNo" required autocomplete="off" placeholder="wordCompletionNo">
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hard Math Questions</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                border-radius: 10px;
+                outline: none;
+            }
+            body{
+                margin: 0;
+            }
+            form{
+                margin-top: 90px;
+            }
+            #in1,#in2{
+                display: block;
+                height: 50px;
+                border: 3px solid orangered;
+                width: 30%;
+                margin: 15px auto;
+                font-size: 25px;
+                padding: 10px;
+            }
+            input[type=submit]{
+                display: block;
+                width: 30%;
+                height: 50px;
+                background-color: blue;
+                margin: 20px auto;
+                font-size: 20px;
+                color: white;
+                font-weight: bold;
+            }
+            h1{
+                text-align: center;
+                color: blue;
+                font-weight: bolder;
+                font-size: 45px;
+            }
+            .row1,.row2{
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0px 25%;
+            }
+            #op1,#op2,#op3,#op4{
+                width: 19%;
+                height: 50px;
+                border: 3px solid yellowgreen;
+                border-radius: 15px;
+                margin: 15px;
+                font-size: 25px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hard Math Questions</h1>
+        <form action="https://us-central1-credito-491b7.cloudfunctions.net/putMathQuestionsHard" method="GET">
+            <input type="text" id="in1" name="question" required autocomplete="off" placeholder="Enter Question Like 32 / 2" onchange="setOp()" onkeyup="calc(this)">
+            <input type="text" id="in2" name="answer" required autocomplete="off" placeholder="Enter Answer like 16">
+
+            <div class="row1">
+                <input type="text" id="op1" name="option1" required autocomplete="off" placeholder="Option1">
+                <input type="text" id="op2" name="option2" required autocomplete="off" placeholder="Option2">
+            </div>
+            <div class="row2">
+                <input type="text" id="op3" name="option3" required autocomplete="off" placeholder="Option3">
+                <input type="text" id="op4" name="option4" required autocomplete="off" placeholder="Option4">
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+
+            function calc(ref){
+                document.getElementById("in2").value = eval(ref.value);
+            }
+
+            function setOp(){
+                const no = getRandomNo(1,4);
+                document.getElementById("op"+no).value = document.getElementById("in2").value;
+                for(var i = 1; i <= 4; i++){
+                    var v = document.getElementById("op"+i).value;
+                    if(v == ""){
+                        if(getRandomNo(0,1) == 0){
+                            //plus
+                            var a = getRandomNo(1 , 15);
+                            document.getElementById("op"+i).value = (parseInt(document.getElementById("in2").value) + a);
+                        }else{
+                            //minus
+                            var a = getRandomNo(1 , 15);
+                            document.getElementById("op"+i).value = (parseInt(document.getElementById("in2").value) - a);
+                        }
+                    }
+                }
+            }
+
+            function getRandomNo(min,max){
+                return Math.floor(Math.random()*(max-min+1)+min);
+            }
+
+            (function(){
+                var q = "";
+                var a = getRandomNo(20,40);
+                var b = getRandomNo(10,65);
+                var c = getRandomNo(34,90);
+
+                var oper1 = "";
+                var oper2 = "";
+
+                switch(getRandomNo(1,4)){
+                    case 1:
+                        oper1 = " + ";
+                    break;
+                    case 2:
+                        oper1 = " - ";
+                    break;
+                    case 3:
+                        oper1 = " * ";
+                    break;
+                    case 4:
+                        oper1 = " / ";
+                    break;
+                }
+
+                switch(getRandomNo(1,4)){
+                    case 1:
+                        oper2 = " + ";
+                    break;
+                    case 2:
+                        oper2 = " - ";
+                    break;
+                    case 3:
+                        oper2 = " * ";
+                    break;
+                    case 4:
+                        oper2 = " / ";
+                    break;
+                }
+
+                q = a + oper1 + b + oper2 + c;
+                document.getElementById("in1").value = q;
+                calc(document.getElementById("in1"));
+                setOp();
+            })();
+
+        </script>
+    </body>
+</html>
